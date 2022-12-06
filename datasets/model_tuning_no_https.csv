@@ -1,0 +1,27 @@
+,model_used,cross_val_score,train_score,test_score,misclass_rate,best_param_1,best_param_2,best_param_3,best_param_4,best_param_5,best_param_6
+0,CVec Logistic Regression,0.8440783480109323,0.8785607196401799,0.8143712574850299,0.18562874251497008,"('cvec__max_df', 0.7)","('cvec__max_features', 2000)","('cvec__min_df', 1)","('cvec__stop_words', None)","('lr__C', 0.1)","('lr__penalty', 'l2')"
+1,CVec Logistic Regression_v2,0.8403279684178561,0.9212893553223388,0.8203592814371258,0.17964071856287422,"('cvec__max_df', 0.6)","('cvec__max_features', 1500)","('lr__C', 10)",-,-,-
+2,TfVec Logistic Regression,0.8388298410770321,0.9242878560719641,0.8353293413173652,0.16467065868263475,"('lr__C', 10)","('tfvec__max_df', 0.6)","('tfvec__max_features', 1500)","('tfvec__min_df', 1)","('tfvec__stop_words', None)",-
+3,TfVec Logistic Regression_v2,0.8410787191686069,0.9242878560719641,0.8293413173652695,0.1706586826347305,"('lr__C', 10)","('tfvec__max_df', 0.5)","('tfvec__max_features', 1600)","('tfvec__min_df', 1)",-,-
+4,CVec MNB,0.8665738772480346,0.8958020989505248,0.8622754491017964,0.13772455089820357,"('cvec__max_df', 0.7)","('cvec__max_features', 3000)","('cvec__min_df', 1)","('cvec__stop_words', None)","('mnb__alpha', 0.5)","('mnb__fit_prior', True)"
+5,CVec MNB_v2,0.8665738772480346,0.8958020989505248,0.8622754491017964,0.13772455089820357,"('cvec__max_df', 0.65)","('cvec__max_features', 3000)","('cvec__min_df', 1)","('mnb__alpha', 0.5)","('mnb__fit_prior', True)",-
+6,TfVec MNB,0.8613253703141344,0.9175412293853074,0.8473053892215568,0.15269461077844315,"('mnb__alpha', 0.5)","('mnb__fit_prior', True)","('tfvec__max_df', 0.7)","('tfvec__min_df', 1)","('tfvec__ngram_range', (1, 1))","('tfvec__stop_words', 'english')"
+7,TfVec MNB_v2,0.8613253703141344,0.9175412293853074,0.8473053892215568,0.15269461077844315,"('mnb__alpha', 0.5)","('mnb__fit_prior', True)","('tfvec__max_df', 0.65)","('tfvec__min_df', 1)","('tfvec__stop_words', 'english')",-
+8,CVec GBoost,0.8500674832135506,0.9250374812593704,0.8413173652694611,0.1586826347305389,"('cvec__max_df', 0.65)","('cvec__max_features', 3000)","('gb__learning_rate', 0.7)","('gb__max_depth', 5)","('gb__n_estimators', 200)",-
+9,CVec GBoost_v2,0.850821608124979,0.9250374812593704,0.8413173652694611,0.1586826347305389,"('cvec__max_df', 0.6)","('cvec__max_features', 3500)","('gb__learning_rate', 0.7)","('gb__max_depth', 6)","('gb__n_estimators', 200)",-
+10,TfVec GBoost,0.8523298579478354,0.9257871064467766,0.8173652694610778,0.1826347305389222,"('gb__learning_rate', 0.7)","('gb__max_depth', 7)","('gb__n_estimators', 200)","('tfvec__stop_words', None)",-,-
+11,TfVec GBoost_v2,0.8433309714208591,0.9182908545727136,0.8203592814371258,0.17964071856287422,"('gb__learning_rate', 0.7)","('gb__max_depth', 8)","('gb__n_iter_no_change', 20)","('gb__tol', 0.03)","('gb__validation_fraction', 0.1)",-
+12,Cvec AdaBoost,0.8448290987616831,0.9250374812593704,0.8233532934131736,0.17664670658682635,"('ada__learning_rate', 0.8)","('ada__n_estimators', 200)","('cvec__stop_words', None)",-,-,-
+13,CVec AdaBoost_v2,0.8418193474373249,0.9257871064467766,0.8293413173652695,0.1706586826347305,"('ada__learning_rate', 0.7)","('ada__n_estimators', 300)",-,-,-,-
+14,TfVec AdaBoost,0.8418362182407125,0.9257871064467766,0.8233532934131736,0.17664670658682635,"('ada__learning_rate', 0.65)","('ada__n_estimators', 400)",-,-,-,-
+15,TfVec AdaBoost_v2,0.8410939028916556,0.9257871064467766,0.8173652694610778,0.1826347305389222,"('ada__learning_rate', 0.6)","('ada__n_estimators', 500)",-,-,-,-
+16,CVec Bagging,0.827588824779836,0.8943028485757122,0.8023952095808383,0.19760479041916168,"('bag__max_features', 400)","('bag__n_estimators', 400)","('cvec__stop_words', None)",-,-,-
+17,CVec Bagging_v2,0.8328322704727199,0.8605697151424287,0.8233532934131736,0.17664670658682635,"('bag__max_samples', 400)","('bag__n_estimators', 200)","('cvec__stop_words', None)",-,-,-
+18,TfVec Bagging,0.8328339575530587,0.8830584707646177,0.8143712574850299,0.18562874251497008,"('bag__max_samples', 500)","('bag__n_estimators', 150)",-,-,-,-
+19,CVec Decision Tree,0.8200914397543612,0.8388305847076462,0.7994011976047904,0.20059880239520955,"('cvec__stop_words', None)","('dt__max_depth', 4)","('dt__max_features', 3000)",-,-,-
+20,CVec Decision Tree_v2,0.8268363869487465,0.8575712143928036,0.8173652694610778,0.1826347305389222,"('dt__max_depth', 5)","('dt__max_features', 3500)",-,-,-,-
+21,TfVec Decision Tree,0.8200863785133449,0.868815592203898,0.8083832335329342,0.19161676646706582,"('dt__max_depth', 5)","('dt__max_features', 3500)",-,-,-,-
+22,TfVec Decision Tree_v2,0.8193390019232716,0.8478260869565217,0.811377245508982,0.18862275449101795,"('dt__max_depth', 4)","('dt__max_features', 3000)",-,-,-,-
+23,CVec Random Forest,0.8178375004217701,0.8245877061469266,0.8023952095808383,0.19760479041916168,"('cvec__stop_words', None)","('rf__max_depth', 7)","('rf__max_samples', 500)","('rf__n_estimators', 1000)",-,-
+24,CVec Random Forest_v2,0.8208371292640955,0.8463268365817092,0.8023952095808383,0.19760479041916168,"('rf__max_depth', 8)","('rf__n_estimators', 800)",-,-,-,-
+25,TfVec Random Forest,0.8170884367513581,0.8418290854572713,0.8053892215568862,0.1946107784431138,"('rf__max_depth', 7)","('rf__n_estimators', 800)",-,-,-,-
