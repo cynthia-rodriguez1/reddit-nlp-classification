@@ -1,4 +1,4 @@
-# Project 3: Destination - Ohio
+# Destination - Ohio
 
 ### Contents:
 - [Problem Statement](#Problem-Statement)
@@ -17,39 +17,39 @@ Before I can analyze the messages or make any recommendations, I need to be able
 
 ### Executive Summary
 
-The first **01-initial-scraping.ipynb** notebook begins by using the pushshift api to import posts from both subreddit threads as separate dataframes.
+The first **[01-initial-scraping.ipynb](code/01-initial-scraping.ipynb)** notebook begins by using the pushshift api to import posts from both subreddit threads as separate dataframes.
 
 **Note: There are two versions of this project and analysis - one in which URLs were deleted from all posts in the dataset, and one in which they were not. All results mentioned below are based on the dataset that had URLs extracted. The second set of models and results are located in the appendix files located in the 'code' folder.**
 
-All cleaning and EDA takes place in the **02-eda-and-preprocessing.ipynb** notebook. Here, we start by extracting only the features that will be used in analysis; in this case, subreddit (as the target), post title, post selftext, and author. We removed all nulls in these remaining columns, and dropped any rows that contained URLs in the title or selftext strings. We also engineered two additional feature columns: title word count and selftext word count. Below we see a distribution of the two variables, which both look to be heavily skewed.
+All cleaning and EDA takes place in the **[02-eda-and-preprocessing.ipynb](code/02-eda-and-preprocessing.ipynb)** notebook. Here, we start by extracting only the features that will be used in analysis; in this case, subreddit (as the target), post title, post selftext, and author. We removed all nulls in these remaining columns, and dropped any rows that contained URLs in the title or selftext strings. We also engineered two additional feature columns: title word count and selftext word count. Below we see a distribution of the two variables, which both look to be heavily skewed.
 
-#![](imgs/hist-title-selftext-word-count.png)
+![](imgs/hist-title-selftext-word-count.png)
 
 After further EDA, we find that the average title length among the two subreddits are close in number, but the mean word count of the selftexts in the Ohio posts is almost 6x greater than the IHateOhio mean. Below are the 20 most-used words in titles of the combined dataframe:
 
-#![](imgs/barh-top-20-title-combined.png)
+![](imgs/barh-top-20-title-combined.png)
 
 The 20 most common words in the subreddit threads' selftext:
 
-#![](imgs/barh-top-20-selftext-combined.png)
+![](imgs/barh-top-20-selftext-combined.png)
 
 These are the 10 most frequent words in each subreddit title:
 
-#![](imgs/barh-top-10-title-separate.png)
+![](imgs/barh-top-10-title-separate.png)
 
 And the 10 most-used words in each of the subreddits' selftexts:
 
-#![](imgs/barh-top-10-selftext-separate.png)
+![](imgs/barh-top-10-selftext-separate.png)
 
 Finally, we examined the mean sentiment scores for both subreddit title and selftext sections.
 
-#![](imgs/bar-sentiment-scores.png)
+![](imgs/bar-sentiment-scores.png)
 
 From this, we can see that the greatest mean for all four is the neutrality score.
 
 The IHateOhio post titles have the lowest mean compound score, at almost -0.10 and the Ohio selftexts have a strong mean of 0.24. All compound score standard deviations are 0.27 or above, meaning that these scores can vary quite a bit and depending on how they vary, could make it easier or harder for the models to classify.
 
-In the **03-model-building.ipynb** notebook, we established the baseline score of 0.522, and built a function that will take in a predefined pipeline as an argument, and output the train and test scores, accuracy and misclassification rates, and a confusion matrix showing the predictions of the best scoring model.
+In the **[03-model-building.ipynb](code/03-model-building.ipynb)** notebook, we established the baseline score of 0.522, and built a function that will take in a predefined pipeline as an argument, and output the train and test scores, accuracy and misclassification rates, and a confusion matrix showing the predictions of the best scoring model.
 
 I wanted to include as little bias as possible, so I used both CountVectorizer and TfidfVectorizer for each model and included almost no hyperparameters. I also tested on the title and selftext columns to determine which was the most effective X variable. What we found is that my previous hypothesis was incorrect; selftext outperformed title as X in all but two models.
 
@@ -62,9 +62,9 @@ Because we had a confusion matrix for all models, we were able to identify a pat
 
 Moving into model trials with hyperparameter tuning, these were the original best-performing models that will be tested first:
 
-#![](imgs/barh-top-10-model-trials.png)
+![](imgs/barh-top-10-model-trials.png)
 
-In the **04-model-tuning.ipynb** notebook, we built another function that will grid search over several hyperparameters in the models, and this time output the best parameters, highest cross-val, train, and test scores, lowest misclassification rate, and again, a confusion matrix for the best model.
+In the **[04-model-tuning.ipynb](code/04-model-tuning.ipynb)** notebook, we built another function that will grid search over several hyperparameters in the models, and this time output the best parameters, highest cross-val, train, and test scores, lowest misclassification rate, and again, a confusion matrix for the best model.
 
 We did also perform a bit of inference, but were not able to pull much useful information from the log coefficients. The main interpretation we were able to make is that using the word 'ohio' in the selftext of a post is a likely predictor that this observation will be classified in the IHateOhio subreddit.  As expected, we also saw quite a few more negative and expletive words like 'hate,' 'bad,' and 'hell' in the important IHateOhio features.
 
